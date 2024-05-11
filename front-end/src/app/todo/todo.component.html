@@ -1,0 +1,33 @@
+<div class="flex justify-center items-center min-h-screen bg-gray-200">
+  <div class="bg-white p-8 rounded-lg shadow-md w-3/4">
+    <div class="mb-8">
+      <label for="todoItem" class="block text-lg font-bold text-gray-800 mb-4">Welcome! Ready to Add a Task For Later?</label>
+      <div class="flex">
+        <input type="text" name="todoItem" id="todoItem" class="w-full border border-gray-300 rounded-l py-2 px-3 bg-gray-100 text-gray-800 focus:outline-none focus:border-blue-400 text-sm placeholder-gray-500" placeholder="Enter task" [formControl]="itemName"/>
+        <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-r transition duration-300 ease-in-out transform hover:scale-105" (click)="pushItemToList()">Add</button>
+    </div>
+
+    <div>
+      <table class="min-w-full">
+        <thead>
+          <tr class="bg-gray-200">
+            <th class="px-4 py-2 text-left">Task</th>
+            <th class="px-4 py-2 text-left">Added By</th>
+            <th class="px-4 py-2 text-left">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b border-gray-200" *ngFor="let item of todoList">
+            <td class="px-4 py-2 text-gray-800">{{ item.itemName }}</td>
+            <td class="px-4 py-2 text-gray-800">USER</td>
+            <td class="px-4 py-2">
+              <!-- Add buttons for update and delete here -->
+              <button class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded mr-2 transition duration-300 ease-in-out transform hover:scale-105" (click)="updateItem(item)">Update</button>
+              <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out transform hover:scale-105" (click)="deleteItem(item.id)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
