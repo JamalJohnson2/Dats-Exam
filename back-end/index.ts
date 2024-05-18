@@ -1,22 +1,15 @@
-import express from 'express'
-import { PrismaClient } from '@prisma/client';
-import bodyParser from 'body-parser';
 import cors from "cors";
+import userRoute from "./routes/userRoute";
+import express from "express";
+import { PrismaClient } from '@prisma/client';
 
+
+const port = process.env.port || 3001;
 const app = express();
+app.use(cors());
 const prisma = new PrismaClient();
 
-// Use bodyParser middleware
-app.use(bodyParser.json());
-
-// Enable CORS using the cors middleware
-app.use(cors());
-
-// Route for handling requests from the Angular client
-app.get('/api/message', (req, res) => { 
-  res.json({ message: 'Hello GEEKS FOR GEEKS Folks from the Express server!' }); 
-}); 
-
+app.use(express.json());
 app.post('/todo', async (req, res) => {
   const { itemName } = req.body;
 
@@ -80,7 +73,6 @@ app.delete("/todo/:id", async (req, res) => {
   }
 });
 
-const port = process.env.PORT || 3000;
-app.listen(port, () => { 
-  console.log(`Server listening on port ${port}`); 
+app.listen(port, () => {
+  console.log(`Active on port ${port}`);
 });
