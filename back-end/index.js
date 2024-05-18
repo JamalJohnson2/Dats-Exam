@@ -1,7 +1,7 @@
-const express = require("express");
-const { PrismaClient } = require("@prisma/client");
-const bodyParser = require("body-parser");
-const cors = require("cors");
+import express from 'express'
+import { PrismaClient } from '@prisma/client';
+import bodyParser from 'body-parser';
+import cors from "cors";
 
 const app = express();
 const prisma = new PrismaClient();

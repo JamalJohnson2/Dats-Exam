@@ -17,3 +17,8 @@ model toDoItem{
   id String @id @default(auto()) @map("_id") @db.ObjectId
   itemName  String
 }
+
+
+model NewItem{
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+}
